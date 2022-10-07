@@ -2,8 +2,8 @@ from datetime import datetime
 import requests
 import os
 
-API_ID = "6381f745"
-API_KEY = "2413e64de79f4e39e16c7dda23bf4d20"
+API_ID = os.environ.get("workouttrackerAPI_ID")
+API_KEY = os.environ.get("workouttrackerAPI_KEY")
 NUTRITIONINX_ENDPOINT = "https://trackapi.nutritionix.com/v2/natural/exercise"
 
 sheety_endpoint = "https://api.sheety.co/f11518c3f269ca4f56dbbd97f5f1f5d8/workoutTracking/workouts"
