@@ -25,14 +25,16 @@ sheety_headers = {
     "Authorization" : TOKEN
 }
 
+# post request from NUTRITIONINX
 response = requests.post(url=NUTRITIONINX_ENDPOINT, json=parameters, headers=headers)
 response.raise_for_status()
 data = response.json()
-# print(data)
 
+# get today's date and current time - for sheet json inputs
 todays_date = datetime.now().strftime("%d/%m/%Y")
 time_now = datetime.now().strftime("%X")
 
+# for each exercise posted/listed, create a new row in the google sheets doc
 for exercise in data["exercises"]:
     sheet_inputs = {
         "workout": {
@@ -43,6 +45,6 @@ for exercise in data["exercises"]:
             "calories" : exercise["nf_calories"]
         }
     }
-    
+    # post request to sheety - google doc successfully updated
     sheety_response = requests.post(SHEETY_ENDPOINT, json=sheet_inputs, headers=sheety_headers)
     print(sheety_response.text)
