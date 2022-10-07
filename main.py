@@ -1,0 +1,5 @@
+from ssl import ALERT_DESCRIPTION_UNKNOWN_PSK_IDENTITY
+import requests
+
+API_ID = "6381f745"
+API_KEY = "2413e64de79f4e39e16c7dda23bf4d20"
