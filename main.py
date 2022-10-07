@@ -5,8 +5,8 @@ import os
 API_ID = os.environ.get("workouttrackerAPI_ID")
 API_KEY = os.environ.get("workouttrackerAPI_KEY")
 NUTRITIONINX_ENDPOINT = "https://trackapi.nutritionix.com/v2/natural/exercise"
-
-sheety_endpoint = "https://api.sheety.co/f11518c3f269ca4f56dbbd97f5f1f5d8/workoutTracking/workouts"
+SHEETY_ENDPOINT = os.environ.get("SHEETY_ENDPOINT")
+TOKEN = os.environ.get("SHEETY_TOKEN")
 
 parameters = {
     "query"     : input("Exercises done: "),
@@ -22,7 +22,7 @@ headers = {
 }
 
 sheety_headers = {
-    "Authorization" : "Bearer dskjnd&bHdinciodonu9indjn#ghbhiiI+owlsGOING"
+    "Authorization" : TOKEN
 }
 
 response = requests.post(url=NUTRITIONINX_ENDPOINT, json=parameters, headers=headers)
@@ -44,5 +44,5 @@ for exercise in data["exercises"]:
         }
     }
     
-    sheety_response = requests.post(sheety_endpoint, json=sheet_inputs, headers=sheety_headers)
+    sheety_response = requests.post(SHEETY_ENDPOINT, json=sheet_inputs, headers=sheety_headers)
     print(sheety_response.text)
