@@ -20,6 +20,10 @@ headers = {
     "x-app-key": API_KEY,
 }
 
+sheety_headers = {
+    "Authorization" : "Bearer dskjnd&bHdinciodonu9indjn#ghbhiiI+owlsGOING"
+}
+
 response = requests.post(url=NUTRITIONINX_ENDPOINT, json=parameters, headers=headers)
 # response.raise_for_status()
 data = response.json()
@@ -39,5 +43,5 @@ for exercise in data["exercises"]:
         }
     }
     
-    sheety_response = requests.post(sheety_endpoint, json=sheet_inputs)
+    sheety_response = requests.post(sheety_endpoint, json=sheet_inputs, headers=sheety_headers)
     print(sheety_response.text)
