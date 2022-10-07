@@ -1,5 +1,6 @@
 from datetime import datetime
 import requests
+import os
 
 API_ID = "6381f745"
 API_KEY = "2413e64de79f4e39e16c7dda23bf4d20"
@@ -25,7 +26,7 @@ sheety_headers = {
 }
 
 response = requests.post(url=NUTRITIONINX_ENDPOINT, json=parameters, headers=headers)
-# response.raise_for_status()
+response.raise_for_status()
 data = response.json()
 # print(data)
 
