@@ -13,9 +13,12 @@ parameters = {
     "age"       : 26,
 }
 
-header = {
-    "header" : API_ID,
+headers = {
+    "x-app-id": API_ID,
+    "x-app-key": API_KEY,
 }
 
-response = requests.post(url=NUTRITIONINX_ENDPOINT, params=parameters, headers=header)
-print(response.text)
+response = requests.post(url=NUTRITIONINX_ENDPOINT, json=parameters, headers=headers)
+response.raise_for_status()
+data = response.json()
+print(data)
